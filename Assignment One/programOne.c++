@@ -3,6 +3,7 @@ using namespace std;
 
 int main() {
     char myChar;
+    cout << "Enter a character: ";
     cin >> myChar;
 
     cout << " " << myChar << " " << myChar << " " << myChar << "\n";
