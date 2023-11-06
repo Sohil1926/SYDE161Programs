@@ -24,7 +24,7 @@ int findGCD(const vector<int>& numbers) {
 
 int main() {
     // input
-int arr[] = {36, 42, 24, 27};
+int arr[] = {989, 42, 24, 27};
 vector<int> inputArray(arr, arr + sizeof(arr) / sizeof(arr[0]));
 
     int result = findGCD(inputArray);
