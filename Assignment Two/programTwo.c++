@@ -1,52 +1,50 @@
 #include <iostream>
 #include <string>
-#include <stdexcept> // For std::invalid_argument
-
-// Bring everything from the std namespace into the current namespace
+#include <stdexcept> 
 using namespace std;
 
-// Helper function to get the conversion rate to meters for a given unit
+// conversion rate to meters for a given unit
 float getConversionRateToMeters(const string& unit) {
     if (unit == "cm") return 0.01f;
     if (unit == "meter") return 1.0f;
     if (unit == "inch") return 0.0254f;
     if (unit == "foot") return 0.3048f;
-    throw invalid_argument("Invalid unit");
+    throw invalid_argument("Entered unit is not valid.");
 }
 
-// Helper function to convert any length to meters
-float toMeters(float length, const string& fromUnit) {
-    return length * getConversionRateToMeters(fromUnit);
+// convert length to meters
+float toMeters(float length, const string& currentUnit) {
+    return length * getConversionRateToMeters(currentUnit);
 }
 
-// Helper function to convert from meters to the target unit
-float fromMeters(float length, const string& toUnit) {
-    return length / getConversionRateToMeters(toUnit);
+// convert  meters to target unit
+float fromMeters(float length, const string& targetUnit) {
+    return length / getConversionRateToMeters(targetUnit);
 }
 
-// Main conversion function
-float convertLength(float length, const string& fromUnit, const string& toUnit) {
-    float lengthInMeters = toMeters(length, fromUnit);
-    return fromMeters(lengthInMeters, toUnit);
+// main conversion functino
+float convertLength(float length, const string& currentUnit, const string& targetUnit) {
+    float lengthInMeters = toMeters(length, currentUnit);
+    return fromMeters(lengthInMeters, targetUnit);
 }
 
 int main() {
     float length;
-    string fromUnit, toUnit;
+    string currentUnit, targetUnit;
 
     cout << "Enter length: ";
     cin >> length;
     cout << "Enter current unit: ";
-    cin >> fromUnit;
+    cin >> currentUnit;
     cout << "Enter target unit: ";
-    cin >> toUnit;
+    cin >> targetUnit;
 
     try {
-        float convertedLength = convertLength(length, fromUnit, toUnit);
-        // Set precision for the output to 3 decimal places
+        float convertedLength = convertLength(length, currentUnit, targetUnit);
+        //format to 3 decimal places
         cout.precision(3);
         cout.setf(ios::fixed);
-        cout << "New converted length in " << toUnit << ": " << convertedLength << endl;
+        cout << "New converted length in " << targetUnit << ": " << convertedLength << endl;
     } catch (const invalid_argument& e) {
         cerr << "Error: " << e.what() << endl;
     }
