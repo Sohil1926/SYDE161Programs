@@ -16,13 +16,13 @@ void findMaxMin(int arr[20], int &maxValue, int &minValue ) {
 }
 
 int main(){ 
-    int arr[20] = {34, 7, 23, 32, 5, 62, 9, 32, 50, 21, 8, 92, 34, 6, 72, 54, 8, 23, 17, 4}; 
+    int arr[20] = {12, 40, 29, 27, 3, 87, 42, 92, 65, 40, 9, 23, 78, 44, 72, 30, 58, 73, 49, 7}; 
     int max, min; 
 
     findMaxMin(arr, max, min);
 
-    cout << "Maximum value: " << max << endl; 
-    cout << "Minimum value: " << min << endl; 
+    cout << "Maximum: " << max << endl; 
+    cout << "Minimum: " << min << endl; 
 
     return 0; 
 }
